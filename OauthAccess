@@ -1,0 +1,26 @@
+<?php
+include ("TwitterAPIExchange.php");
+//require_once("TwitterAPIExchange.php");
+
+    $settings = array(
+        'oauth_access_token' => "1726650726-8T5HjqOxctlmbeATxkH8F22f5HmVqY6AgbqeGl0",
+        'oauth_access_token_secret' => "zr3NlHHR4fiGToC8L7N4Fe4zlFzhp1J5cym7YcSgeU",
+        'consumer_key' => "I5Ieq55hAsvrtopHIIKzUA",
+        'consumer_secret' => "PM7Uq617Nz4bCUe60EpywePdzJGhMhDHbXtwVMnuhI"
+    );
+
+    //REcurso del API que queremos consultar
+    $url = 'https:\\api.twitter.com\\1.1\\statuses\\user_timeline.json';
+    $variablesget = '?screen_name=jorge_vgut';
+    $requestMethod = 'GET';
+
+    $twitter = new TwitterAPIExchange($settings);
+    //$test = $twitter->buildOauth($url, $requestMethod) ->performRequest();
+    echo json_encode($twitter->setGetfield($variablesget)
+                 ->buildOauth($url, $requestMethod) //construir autenticacion
+                 ->performRequest());
+            
+   // echo json_encode($test);
+               
+            
+?>
